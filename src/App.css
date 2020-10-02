@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.textfield {
+  border-radius: 7px;
+  border: none;
+  padding: 0.8rem 0.3rem;
+  outline: none;
+}
+
+.textfield:focus {
+  border: 1px solid blue;
+}
