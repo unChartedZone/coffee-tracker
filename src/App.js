@@ -1,12 +1,13 @@
 import React from "react";
-import "./App.css";
+import Btn from "./components/Btn";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <h1>Coffee Tracker</h1>
-        <input className="textfield" placeholder="Find Me Coffee" type="text" />
+        <Btn text={"Find Me Coffee"}>Find Me Coffee</Btn>
+        {/* <input className="textfield" placeholder="Find Me Coffee" type="text" /> */}
       </header>
     </div>
   );
