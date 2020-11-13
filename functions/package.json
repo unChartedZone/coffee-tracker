@@ -12,6 +12,7 @@
   "author": "shortdiv",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "yelp-fusion": "^3.0.0"
   }
 }

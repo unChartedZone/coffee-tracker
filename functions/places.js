@@ -1,4 +1,6 @@
 const yelp = require("yelp-fusion");
+const dotenv = require("dotenv");
+dotenv.config();
 
 const headers = {
   "Access-Control-Allow-Origin": "*",
@@ -29,7 +31,7 @@ exports.handler = async function (event, context, callback) {
     });
   } catch (err) {
     return callback(null, {
-      statusCode: 200,
+      statusCode: 400,
       headers,
       body: JSON.stringify({
         err,
