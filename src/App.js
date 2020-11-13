@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import GlobalStyles from './components/GlobalStyles';
-import Btn from './components/Btn';
+import GlobalStyles from './styles/GlobalStyles';
 import CoffeePlaces from './components/CoffeePlaces';
 
 const instance = axios.create({
