@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import GlobalStyles from './styles/GlobalStyles';
+
+// Components
+import Header from './components/Header';
 import CoffeePlaces from './components/CoffeePlaces';
 
 const instance = axios.create({
@@ -30,14 +33,7 @@ const App = () => {
   return (
     <>
       <GlobalStyles />
-      <header className="header">
-        <h1 className="header__display">Coffee Tracker</h1>
-      </header>
-      <Btn text={'Find Me Coffee'} onClick={handleClick}>
-        Find Me Coffee
-      </Btn>
-      <CoffeePlaces places={places} />
-    </>
+        <Header />
   );
 };
 
