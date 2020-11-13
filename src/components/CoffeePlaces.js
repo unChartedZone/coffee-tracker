@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import CoffeeContext from '../context/coffee-context';
 
-const CoffeePlaces = (props) => {
+const CoffeePlaces = () => {
+  const { places } = useContext(CoffeeContext);
+
   return (
     <>
       <h2 className="title">Coffee Places</h2>
       <ul>
-        {props.places.map((place) => {
+        {places.map((place) => {
           return <li key={place.id}>{place.alias}</li>;
         })}
       </ul>

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import CoffeeContext from './context/coffee-context';
+
 import GlobalStyles from './styles/GlobalStyles';
 
 // Components
@@ -32,13 +34,14 @@ const App = () => {
   };
 
   return (
-    <>
+    <CoffeeContext.Provider value={{ places, setPlaces }}>
       <GlobalStyles />
       <main>
         <Header />
         <CoffeeForm findCoffee={handleClick} />
         <CoffeePlaces />
       </main>
+    </CoffeeContext.Provider>
   );
 };
 
