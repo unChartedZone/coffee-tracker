@@ -4,6 +4,7 @@ import GlobalStyles from './styles/GlobalStyles';
 
 // Components
 import Header from './components/Header';
+import CoffeeForm from './components/CoffeeForm';
 import CoffeePlaces from './components/CoffeePlaces';
 
 const instance = axios.create({
@@ -33,7 +34,11 @@ const App = () => {
   return (
     <>
       <GlobalStyles />
+      <main>
         <Header />
+        <CoffeeForm findCoffee={handleClick} />
+        <CoffeePlaces />
+      </main>
   );
 };
 
