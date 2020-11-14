@@ -1,33 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import CoffeeContext from '../context/coffee-context';
 import Btn from './Btn';
 import TextField from './TextField';
 
 const CoffeeForm = ({ findCoffee }) => {
-  const [city, setCity] = useState('');
-  const [zipCode, setZipCode] = useState('');
-
-  const handleCityChange = (value) => {
-    setCity(value);
-  };
-
-  const handleZipCodeChange = (value) => {
-    setZipCode(value);
-  };
+  const { location, setLocation } = useContext(CoffeeContext);
 
   return (
     <div>
-      <h1>City: {city}</h1>
-      <h1>Zip Code: {zipCode}</h1>
       <TextField
-        value={city}
-        onChange={handleCityChange}
+        value={location}
+        onChange={(value) => setLocation(value)}
         placeholder="City"
-        type="text"
-      />
-      <TextField
-        value={zipCode}
-        onChange={handleZipCodeChange}
-        placeholder="Zip Code"
         type="text"
       />
       <Btn onClick={findCoffee}>Find Me Coffee</Btn>

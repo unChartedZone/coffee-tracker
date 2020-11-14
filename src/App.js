@@ -15,13 +15,14 @@ const instance = axios.create({
 
 const App = () => {
   const [places, setPlaces] = useState([]);
+  const [location, setLocation] = useState('');
 
-  const handleClick = async () => {
+  const findCoffee = async () => {
     try {
       let response = await instance.get('/.netlify/functions/places', {
         params: {
           term: 'coffee',
-          location: 'San Diego',
+          location,
           limit: 10,
         },
       });
@@ -34,11 +35,13 @@ const App = () => {
   };
 
   return (
-    <CoffeeContext.Provider value={{ places, setPlaces }}>
+    <CoffeeContext.Provider
+      value={{ places, setPlaces, location, setLocation }}
+    >
       <GlobalStyles />
       <main>
         <Header />
-        <CoffeeForm findCoffee={handleClick} />
+        <CoffeeForm findCoffee={findCoffee} />
         <CoffeePlaces />
       </main>
     </CoffeeContext.Provider>
