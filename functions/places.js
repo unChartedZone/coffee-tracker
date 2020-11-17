@@ -10,6 +10,7 @@ const headers = {
 
 exports.handler = async function (event, context, callback) {
   const apiKey = `${process.env.REACT_APP_YELP_API_KEY}`;
+  console.log("API KEY:", apiKey);
   const client = yelp.client(apiKey);
   const { term, location, limit } = event.queryStringParameters;
 
@@ -19,23 +20,19 @@ exports.handler = async function (event, context, callback) {
     limit,
   };
 
-  try {
-    let res = await client.search(searchRequest);
+  let res = null;
 
-    return await callback(null, {
-      statusCode: 200,
-      headers,
-      body: JSON.stringify({
-        res,
-      }),
-    });
-  } catch (err) {
-    return callback(null, {
-      statusCode: 400,
-      headers,
-      body: JSON.stringify({
-        err,
-      }),
-    });
+  try {
+    res = await client.search(searchRequest);
+  } catch (e) {
+    console.log(e);
   }
+
+  return {
+    statusCode: 200,
+    headers,
+    body: JSON.stringify({
+      res,
+    }),
+  };
 };
