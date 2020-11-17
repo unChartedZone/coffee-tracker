@@ -11,10 +11,10 @@ const ButtonStyles = styled.button`
   padding: 0.5rem 1rem;
 `;
 
-const Button = (props) => {
+const Button = ({ children, onClick, type }) => {
   return (
-    <ButtonStyles onClick={() => props.onClick()}>
-      {props.children}
+    <ButtonStyles type={type} onClick={onClick}>
+      {children}
     </ButtonStyles>
   );
 };

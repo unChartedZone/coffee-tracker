@@ -15,14 +15,10 @@ const GlobalStyles = createGlobalStyle`
   }
 
   main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),url(${bgImg});
     background-size: cover;
     color: white;
+    min-height: 100vh;
    
   }
 
