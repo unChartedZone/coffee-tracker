@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import CoffeeContext from '../context/coffee-context';
-import Btn from './Btn';
 import TextField from './TextField';
 
 const CoffeeFormStyles = styled.div`
@@ -14,20 +13,24 @@ const CoffeeFormStyles = styled.div`
   }
 `;
 
-const CoffeeForm = ({ findCoffee, getCoffee }) => {
+const CoffeeForm = ({ findCoffee }) => {
   const { location, setLocation } = useContext(CoffeeContext);
 
   return (
     <CoffeeFormStyles>
-    <div>
-      <TextField
-        value={location}
-        onChange={(value) => setLocation(value)}
-        placeholder="City"
-        type="text"
-      />
-      <Btn onClick={findCoffee}>Find Me Coffee</Btn>
-    </div>
+      <div>
+        <form onSubmit={findCoffee}>
+          <TextField
+            value={location}
+            onChange={(value) => setLocation(value)}
+            placeholder="City"
+            type="text"
+          />
+        </form>
+        {/* <Btn type="submit" onClick={getCoffee}>
+          Find Me Coffee
+        </Btn> */}
+      </div>
     </CoffeeFormStyles>
   );
 };

@@ -17,7 +17,14 @@ const App = () => {
   const [places, setPlaces] = useState([]);
   const [location, setLocation] = useState('');
 
-  const findCoffee = async () => {
+  const findCoffee = async (e) => {
+    e.preventDefault();
+
+    if (location === '') {
+      console.log("Location can't be empty!");
+      return;
+    }
+
     try {
       let response = await instance.get('/.netlify/functions/places', {
         params: {
