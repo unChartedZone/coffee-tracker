@@ -11,15 +11,14 @@ const GlobalStyles = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
-    box-sizing: content-box;
+    box-sizing: border-box;
   }
 
   main {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),url(${bgImg});
+    /* background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),url(${bgImg}); */
     background-size: cover;
-    color: white;
     min-height: 100vh;
-   
+    padding: 20rem 0 0 0;
   }
 
   .title {
