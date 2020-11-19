@@ -23,7 +23,7 @@ const CoffeeForm = ({ findCoffee }) => {
           <TextField
             value={location}
             onChange={(value) => setLocation(value)}
-            placeholder="City"
+            placeholder="Location"
             type="text"
           />
         </form>

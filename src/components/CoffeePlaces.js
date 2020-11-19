@@ -4,9 +4,8 @@ import styled from 'styled-components';
 
 const PlacesStyled = styled.div`
   ul {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: auto auto auto;
     flex-direction: column;
     list-style: none;
 
@@ -63,7 +62,7 @@ const CoffeePlaces = () => {
                 </div>
                 <div className="place__info">
                   <h1 className="place__title title">{place.name}</h1>
-                  <p>{place.name}</p>
+                  <p>{place.rating}</p>
                 </div>
               </Place>
             );
