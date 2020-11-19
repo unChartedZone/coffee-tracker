@@ -9,8 +9,10 @@ import Header from './components/Header';
 import CoffeeForm from './components/CoffeeForm';
 import CoffeePlaces from './components/CoffeePlaces';
 
+const baseURL = process.env.REACT_APP_BASE_API_URL;
+
 const instance = axios.create({
-  baseURL: 'http://localhost:9000/',
+  baseURL: baseURL,
 });
 
 const App = () => {
