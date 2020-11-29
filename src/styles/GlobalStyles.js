@@ -18,7 +18,7 @@ const GlobalStyles = createGlobalStyle`
     /* background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),url(${bgImg}); */
     background-size: cover;
     min-height: 100vh;
-    padding: 20rem 0 0 0;
+    padding: 10rem 0 0 0;
   }
 
   .title {

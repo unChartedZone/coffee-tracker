@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const PlacesStyled = styled.div`
   ul {
     display: grid;
+    justify-items: center;
     grid-template-columns: auto auto auto;
     flex-direction: column;
     list-style: none;
@@ -31,12 +32,17 @@ const Place = styled.li`
   .place {
     &__img {
       overflow: hidden;
-      background-color: purple;
+      position: relative;
+
+      &:hover img {
+        transform: scale(1.25);
+      }
 
       img {
         height: 100%;
         width: 100%;
         object-fit: cover;
+        transition: transform 0.4s;
       }
     }
 
@@ -62,6 +68,10 @@ const CoffeePlaces = () => {
                 </div>
                 <div className="place__info">
                   <h1 className="place__title title">{place.name}</h1>
+                  <p>
+                    {place.location.address1}, {place.location.city},
+                    {place.location.zip_code}
+                  </p>
                   <p>{place.rating}</p>
                 </div>
               </Place>
