@@ -32,7 +32,7 @@ const App = () => {
         params: {
           term: 'coffee',
           location,
-          limit: 10,
+          limit: 9,
         },
       });
 

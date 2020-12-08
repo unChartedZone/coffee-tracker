@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import CoffeeContext from '../context/coffee-context';
 import TextField from './TextField';
+import Btn from './Btn';
 
 const CoffeeFormStyles = styled.div`
   margin: 2rem 0;
@@ -26,10 +27,10 @@ const CoffeeForm = ({ findCoffee }) => {
             placeholder="Location"
             type="text"
           />
+          <Btn block type="submit">
+            Find Me Coffee
+          </Btn>
         </form>
-        {/* <Btn type="submit" onClick={getCoffee}>
-          Find Me Coffee
-        </Btn> */}
       </div>
     </CoffeeFormStyles>
   );
