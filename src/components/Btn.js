@@ -8,6 +8,12 @@ const ButtonStyles = styled.button`
   background: transparent;
   cursor: pointer;
   padding: 0.5rem 1rem;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    /* background-color: rgba(230, 230, 230, 0.3); */
+    transform: translateY(-0.5rem);
+  }
 
   ${(props) =>
     props.block &&

@@ -3,6 +3,8 @@ import CoffeeContext from '../context/coffee-context';
 import styled from 'styled-components';
 
 const PlacesStyled = styled.div`
+  margin: 8rem 0;
+
   ul {
     display: grid;
     justify-items: center;
@@ -18,25 +20,26 @@ const PlacesStyled = styled.div`
 
 const Place = styled.li`
   font-size: 1.6rem;
+  border: 1px solid #fafafa;
   border-radius: 7px;
   background-color: white;
   color: black;
   height: 15rem;
   width: 40rem;
   display: grid;
-  grid-template-columns: 30% 40%;
+  grid-template-columns: 30% 70%;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
   overflow: hidden;
+
+  &:hover img {
+    transform: scale(1.25);
+  }
 
   .place {
     &__img {
       overflow: hidden;
       position: relative;
-
-      &:hover img {
-        transform: scale(1.25);
-      }
 
       img {
         height: 100%;
