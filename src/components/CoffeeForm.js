@@ -15,7 +15,7 @@ const CoffeeFormStyles = styled.div`
 `;
 
 const CoffeeForm = ({ findCoffee }) => {
-  const { location, setLocation } = useContext(CoffeeContext);
+  const { location, setLocation, errorMessage } = useContext(CoffeeContext);
 
   return (
     <CoffeeFormStyles>
@@ -26,6 +26,7 @@ const CoffeeForm = ({ findCoffee }) => {
             onChange={(value) => setLocation(value)}
             placeholder="Location"
             type="text"
+            errorMessage={errorMessage}
           />
           <Btn block type="submit">
             Find Me Coffee

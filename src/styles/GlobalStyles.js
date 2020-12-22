@@ -14,6 +14,10 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  p {
+    font-size: 1.6rem;
+  }
+
   main {
     /* background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),url(${bgImg}); */
     background-size: cover;

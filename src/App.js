@@ -18,6 +18,7 @@ const instance = axios.create({
 const App = () => {
   const [places, setPlaces] = useState([]);
   const [location, setLocation] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const [offset, setOffset] = useState(0);
   const [loaded, setLoaded] = useState(false);
 
@@ -27,10 +28,12 @@ const App = () => {
 
     if (location === '') {
       console.log("Location can't be empty!");
+      setErrorMessage("Location can't be empty!");
       return;
     }
 
     try {
+      setErrorMessage('');
       let response = await instance.get('/.netlify/functions/places', {
         params: {
           term: 'coffee',
@@ -75,6 +78,7 @@ const App = () => {
         setPlaces,
         location,
         setLocation,
+        errorMessage,
         loaded,
       }}
     >

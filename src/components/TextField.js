@@ -9,9 +9,17 @@ const TextFieldStyles = styled.div`
     border: 1px solid #aaa;
     border-radius: 7px;
   }
+
+  .textfield {
+    &__error {
+      color: red;
+      margin: 0.75rem 0 0 0;
+      text-align: center;
+    }
+  }
 `;
 
-const TextField = ({ type, placeholder, value, onChange }) => {
+const TextField = ({ type, placeholder, value, onChange, errorMessage }) => {
   return (
     <TextFieldStyles>
       <input
@@ -20,6 +28,7 @@ const TextField = ({ type, placeholder, value, onChange }) => {
         value={value}
         onChange={(e) => onChange(e.target.value)}
       />
+      <p className="textfield__error">{errorMessage}</p>
     </TextFieldStyles>
   );
 };
