@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import CoffeeContext from '../context/coffee-context';
 import styled from 'styled-components';
 
+import Btn from './Btn.js';
+
 const PlacesStyled = styled.div`
   margin: 8rem 0;
 
@@ -55,8 +57,25 @@ const Place = styled.li`
   }
 `;
 
-const CoffeePlaces = () => {
-  const { places } = useContext(CoffeeContext);
+const CoffeePlaces = ({ findMoreCoffee }) => {
+  const { places, loaded } = useContext(CoffeeContext);
+
+  const MoreLocations = () => {
+    if (loaded) {
+      return (
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            margin: '2rem 0',
+          }}
+        >
+          <Btn onClick={findMoreCoffee}>Load More Places</Btn>
+        </div>
+      );
+    } else return null;
+  };
 
   return (
     <>
@@ -81,6 +100,7 @@ const CoffeePlaces = () => {
             );
           })}
         </ul>
+        <MoreLocations />
       </PlacesStyled>
     </>
   );

@@ -11,12 +11,13 @@ const headers = {
 exports.handler = async function (event, context, callback) {
   const apiKey = `${process.env.REACT_APP_YELP_API_KEY}`;
   const client = yelp.client(apiKey);
-  const { term, location, limit } = event.queryStringParameters;
+  const { term, location, limit, offset } = event.queryStringParameters;
 
   const searchRequest = {
     term,
     location,
     limit,
+    offset,
   };
 
   let res = null;
