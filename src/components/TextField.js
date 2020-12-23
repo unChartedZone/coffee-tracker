@@ -8,6 +8,7 @@ const TextFieldStyles = styled.div`
     padding: 1rem;
     border: 1px solid #aaa;
     border-radius: 7px;
+    font-size: 1.6rem;
   }
 
   .textfield {
@@ -28,7 +29,7 @@ const TextField = ({ type, placeholder, value, onChange, errorMessage }) => {
         value={value}
         onChange={(e) => onChange(e.target.value)}
       />
-      <p className="textfield__error">{errorMessage}</p>
+      <p className="textfield__error text">{errorMessage}</p>
     </TextFieldStyles>
   );
 };

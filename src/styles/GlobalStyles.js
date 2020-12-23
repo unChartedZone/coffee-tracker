@@ -14,10 +14,6 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  p {
-    font-size: 1.6rem;
-  }
-
   main {
     /* background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),url(${bgImg}); */
     background-size: cover;
@@ -26,7 +22,11 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .title {
-    font-size: 2rem;
+    font-size: 3rem;
+  }
+
+  .text {
+    font-size: 1.6rem;
   }
 `;
 
