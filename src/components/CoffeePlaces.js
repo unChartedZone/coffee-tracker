@@ -64,8 +64,27 @@ const Place = styled.li`
       }
     }
 
-    &__header {
+    &__header,
+    &__body {
       padding: 0.5rem;
+    }
+
+    &__body {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__address {
+      color: #4c4e4c;
+    }
+
+    &__rating {
+      background-color: #f2d024;
+      border-radius: 7px;
+      color: black;
+      display: inline-block;
+      padding: 0.3rem 0.5rem;
     }
   }
 `;
@@ -104,12 +123,12 @@ const CoffeePlaces = ({ findMoreCoffee }) => {
                 <div className="place__header">
                   <h1 className="place__title title">{place.name}</h1>
                 </div>
-                <div className="place_body">
-                  <p>
+                <div className="place__body">
+                  <p className="place__address">
                     {place.location.address1}, {place.location.city},
                     {place.location.zip_code}
                   </p>
-                  <p>{place.rating}</p>
+                  <p className="place__rating">{place.rating}</p>
                 </div>
               </Place>
             );
