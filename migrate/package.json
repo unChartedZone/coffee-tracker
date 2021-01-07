@@ -1,0 +1,47 @@
+{
+  "name": "coffee-tracker",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.21.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.3",
+    "styled-components": "4.4.1"
+  },
+  "scripts": {
+    "👇 ABOUT-start-command": "💡 start the app and server #",
+    "start": "npm-run-all --parallel start:app start:server",
+    "start:app": "react-scripts start",
+    "start:server": "netlify-lambda serve functions -c ./webpack.config.js",
+    "👇 ABOUT-prebuild-command": "💡 before 'build' runs, run the 'bootstrap' command #",
+    "👇 ABOUT-build-command": "💡 build the react app and the serverless functions #",
+    "build": "npm-run-all --parallel build:**",
+    "build:app": "react-scripts build",
+    "build:functions": "netlify-lambda build functions -c ./webpack.config.js"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "netlify-lambda": "^2.0.1",
+    "npm-run-all": "^4.1.5",
+    "dotenv": "^8.2.0",
+    "yelp-fusion": "^3.0.0"
+  }
+}
