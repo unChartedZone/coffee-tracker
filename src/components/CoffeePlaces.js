@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
 import CoffeeContext from '../context/coffee-context';
 import styled from 'styled-components';
-import { device } from '../helpers/device';
+import LazyLoad from 'react-lazyload';
 
+import fallbackImage from '../assets/images/coffee-shop-bg.jpg';
+import { device } from '../helpers/device';
 import Btn from './Btn.js';
 
 const PlacesStyled = styled.div`
@@ -111,14 +113,19 @@ const CoffeePlaces = ({ findMoreCoffee }) => {
 
   return (
     <>
-      {/* <h2 className="title">Coffee Places</h2> */}
       <PlacesStyled>
         <ul>
           {places.map((place) => {
             return (
               <Place key={place.id}>
                 <div className="place__img">
-                  <img src={place.image_url} alt={place.name} />
+                  <LazyLoad height={250}>
+                    <img
+                      src={place.image_url}
+                      alt={place.name}
+                      onError={(el) => (el.currentTarget.src = fallbackImage)}
+                    />
+                  </LazyLoad>
                 </div>
                 <div className="place__header">
                   <h1 className="place__title title">{place.name}</h1>
