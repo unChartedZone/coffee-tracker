@@ -1,8 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import CoffeeContext from '../context/coffee-context';
 import TextField from './TextField';
 import Btn from './Btn';
+import { gql } from '@apollo/client';
+import apolloClient from '../apollo/';
 
 const CoffeeFormStyles = styled.div`
   margin: 2rem 0;
@@ -16,6 +18,31 @@ const CoffeeFormStyles = styled.div`
 
 const CoffeeForm = ({ findCoffee }) => {
   const { location, setLocation, errorMessage } = useContext(CoffeeContext);
+
+  useEffect(() => {
+    console.log('Loaded!');
+
+    const loadPlaces = async () => {
+      try {
+        let result = await apolloClient.query({
+          query: gql`
+            query myQuery {
+              business(id: "garaje-san-francisco") {
+                name
+                id
+              }
+            }
+          `,
+        });
+
+        console.log(result);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
+    loadPlaces();
+  }, []);
 
   return (
     <CoffeeFormStyles>
