@@ -15,7 +15,9 @@ const CoffeeFormStyles = styled.div`
 `;
 
 const CoffeeForm = ({ findCoffee }) => {
-  const { location, setLocation, errorMessage } = useContext(CoffeeContext);
+  const { location, setLocation, errorMessage, loading } = useContext(
+    CoffeeContext
+  );
 
   return (
     <CoffeeFormStyles>
@@ -28,7 +30,7 @@ const CoffeeForm = ({ findCoffee }) => {
             type="text"
             errorMessage={errorMessage}
           />
-          <Btn block type="submit">
+          <Btn block type="submit" loading={loading}>
             Find Me Coffee
           </Btn>
         </form>

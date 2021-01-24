@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import axios from 'axios';
 import CoffeeContext from './context/coffee-context';
 
@@ -21,35 +21,53 @@ const App = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [offset, setOffset] = useState(0);
   const [loaded, setLoaded] = useState(false);
+  const [loading, setLoading] = useState(false); // Controls wether to show loading animation or not
 
-  const findCoffee = async (e) => {
-    e.preventDefault();
-    setLoaded(false);
+  const isMounted = useRef(true);
 
-    if (location === '') {
-      console.log("Location can't be empty!");
-      setErrorMessage("Location can't be empty!");
-      return;
-    }
+  useEffect(() => {
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
 
-    try {
-      setErrorMessage('');
-      let response = await instance.get('/.netlify/functions/places', {
-        params: {
-          term: 'coffee',
-          location,
-          limit: 9,
-        },
-      });
+  const findCoffee = useCallback(
+    async (e) => {
+      e.preventDefault();
+      setLoaded(false);
 
-      let data = JSON.parse(response.data.res.body);
-      setPlaces(data.businesses);
-      setLoaded(true);
-      setOffset(9);
-    } catch (e) {
-      console.log('Error fetching coffee places', e);
-    }
-  };
+      if (location === '') {
+        console.log("Location can't be empty!");
+        setErrorMessage("Location can't be empty!");
+        return;
+      }
+
+      if (loading) return;
+
+      setLoading(true);
+
+      try {
+        setErrorMessage('');
+        let response = await instance.get('/.netlify/functions/places', {
+          params: {
+            term: 'coffee',
+            location,
+            limit: 9,
+          },
+        });
+
+        let data = JSON.parse(response.data.res.body);
+        setPlaces(data.businesses);
+        setLoaded(true);
+        setOffset(9);
+      } catch (e) {
+        console.log('Error fetching coffee places', e);
+      } finally {
+        if (isMounted.current) setLoading(false);
+      }
+    },
+    [loading]
+  );
 
   const findMoreCoffee = async () => {
     try {
@@ -80,6 +98,8 @@ const App = () => {
         setLocation,
         errorMessage,
         loaded,
+        loading,
+        setLoading,
       }}
     >
       <GlobalStyles />
