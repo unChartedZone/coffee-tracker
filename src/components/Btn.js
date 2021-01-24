@@ -12,11 +12,9 @@ const ButtonStyles = styled.button`
   min-height: 3rem;
   outline: none;
 
-  /* &:hover {
-    background-color: black;
-    color: white; */
-  /* transform: translateY(-0.5rem); */
-  /* } */
+  &:hover {
+    transform: scale(1.05) translateY(-0.2rem);
+  }
 
   ${(props) =>
     props.block &&

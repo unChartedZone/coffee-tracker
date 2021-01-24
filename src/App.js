@@ -16,15 +16,18 @@ const instance = axios.create({
 });
 
 const App = () => {
+  // TODO: Use a reducer to simply all of this
   const [places, setPlaces] = useState([]);
   const [location, setLocation] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [offset, setOffset] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [loading, setLoading] = useState(false); // Controls wether to show loading animation or not
+  const [loadingMorePlaces, setLoadingMorePlaces] = useState(false);
 
   const isMounted = useRef(true);
 
+  // set isMounted to false when we unmount the component
   useEffect(() => {
     return () => {
       isMounted.current = false;
@@ -42,6 +45,7 @@ const App = () => {
         return;
       }
 
+      // don't send again while we are sending
       if (loading) return;
 
       setLoading(true);
@@ -63,10 +67,11 @@ const App = () => {
       } catch (e) {
         console.log('Error fetching coffee places', e);
       } finally {
-        if (isMounted.current) setLoading(false);
+        // once the request is sent, update the state again
+        if (isMounted.current) setLoading(false); // only update if we are still mounted
       }
     },
-    [loading]
+    [loading, location] // update the callback if the state changes
   );
 
   const findMoreCoffee = async () => {
