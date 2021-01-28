@@ -10,11 +10,13 @@ const ButtonStyles = styled.button`
   padding: 0.5rem 1rem;
   transition: all 0.2s ease-in-out;
   min-height: 3rem;
+  width: initial;
   outline: none;
+  position: relative;
 
-  &:hover {
+  /* &:hover {
     transform: scale(1.05) translateY(-0.2rem);
-  }
+  } */
 
   ${(props) =>
     props.block &&
@@ -26,25 +28,27 @@ const ButtonStyles = styled.button`
 
 const LoadingIcon = styled.div`
   display: inline-block;
-  position: relative;
-  width: 100%;
+  position: absolute;
+  width: 90%;
   height: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: 1s spinning infinite linear;
   user-select: none;
+  background-color: white;
 
   &:after {
     content: '';
     display: block;
-    position: absolute;
-    width: 1.5rem;
-    height: 1.5rem;
+    /* position: absolute; */
+    width: 1.2rem;
+    height: 1.2rem;
     border-radius: 50%;
     border: 2px solid black;
+    /* this breaks up the icon into 2 pieces */
     border-color: black transparent black transparent;
     user-select: none;
+    animation: 1s spinning infinite linear;
   }
 
   @keyframes spinning {
@@ -60,7 +64,8 @@ const LoadingIcon = styled.div`
 const Button = ({ children, onClick, type, block, loading }) => {
   return (
     <ButtonStyles block={block} type={type} onClick={onClick}>
-      {!loading ? children : <LoadingIcon />}
+      {loading ? <LoadingIcon /> : null}
+      {children}
     </ButtonStyles>
   );
 };

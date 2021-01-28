@@ -92,7 +92,7 @@ const Place = styled.li`
 `;
 
 const CoffeePlaces = ({ findMoreCoffee }) => {
-  const { places, loaded } = useContext(CoffeeContext);
+  const { places, loaded, loadingMorePlaces } = useContext(CoffeeContext);
 
   const MoreLocations = () => {
     if (loaded) {
@@ -105,7 +105,9 @@ const CoffeePlaces = ({ findMoreCoffee }) => {
             margin: '2rem 0',
           }}
         >
-          <Btn onClick={findMoreCoffee}>Load More Places</Btn>
+          <Btn onClick={findMoreCoffee} loading={loadingMorePlaces}>
+            Load More Places
+          </Btn>
         </div>
       );
     } else return null;

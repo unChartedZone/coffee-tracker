@@ -74,8 +74,9 @@ const App = () => {
     [loading, location] // update the callback if the state changes
   );
 
-  const findMoreCoffee = async () => {
+  const findMoreCoffee = useCallback(async () => {
     try {
+      setLoadingMorePlaces(true);
       let response = await instance.get('/.netlify/functions/places', {
         params: {
           term: 'coffee',
@@ -86,13 +87,14 @@ const App = () => {
       });
 
       let data = JSON.parse(response.data.res.body);
-      console.log('Dat: ', data);
       setPlaces([...places, ...data.businesses]);
       setOffset(offset + 9);
     } catch (e) {
       console.log('Errors fetching more coffee places', e);
+    } finally {
+      setLoadingMorePlaces(false);
     }
-  };
+  }, [location, offset, places]);
 
   return (
     <CoffeeContext.Provider
@@ -104,7 +106,7 @@ const App = () => {
         errorMessage,
         loaded,
         loading,
-        setLoading,
+        loadingMorePlaces,
       }}
     >
       <GlobalStyles />
