@@ -1,7 +1,13 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import React, {
+  useEffect,
+  useState,
+  useRef,
+  useCallback,
+  useContext,
+} from 'react';
 import axios from 'axios';
+
 import CoffeeContext from '../context/coffee-context';
-import GlobalStyles from '../styles/GlobalStyles';
 
 // Components
 import Header from '../components/Header';
@@ -15,14 +21,22 @@ const instance = axios.create({
 });
 
 const Index = () => {
-  // TODO: Use a reducer to simply all of this
-  const [places, setPlaces] = useState([]);
-  const [location, setLocation] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [offset, setOffset] = useState(0);
-  const [loaded, setLoaded] = useState(false);
-  const [loading, setLoading] = useState(false); // Controls wether to show loading animation or not
-  const [loadingMorePlaces, setLoadingMorePlaces] = useState(false);
+  const {
+    places,
+    setPlaces,
+    location,
+    setLocation,
+    errorMessage,
+    setErrorMessage,
+    loaded,
+    setLoaded,
+    loading,
+    setLoading,
+    loadingMorePlaces,
+    setLoadingMorePlaces,
+    offset,
+    setOffset,
+  } = useContext(CoffeeContext);
 
   const isMounted = useRef(true);
 
@@ -98,25 +112,11 @@ const Index = () => {
     }
   }, [location, offset, places]);
   return (
-    <CoffeeContext.Provider
-      value={{
-        places,
-        setPlaces,
-        location,
-        setLocation,
-        errorMessage,
-        loaded,
-        loading,
-        loadingMorePlaces,
-      }}
-    >
-      <GlobalStyles />
-      <main>
-        <Header />
-        <CoffeeForm findCoffee={findCoffee} />
-        <CoffeePlaces findMoreCoffee={findMoreCoffee} />
-      </main>
-    </CoffeeContext.Provider>
+    <main>
+      <Header />
+      <CoffeeForm findCoffee={findCoffee} />
+      <CoffeePlaces findMoreCoffee={findMoreCoffee} />
+    </main>
   );
 };
 
