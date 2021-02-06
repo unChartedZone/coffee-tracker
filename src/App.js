@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // Styles
 import GlobalStyles from './styles/GlobalStyles';
+import Typograhpy from './styles/Typography';
 
 // Context
 import CoffeeContext from './context/coffee-context';
@@ -42,6 +43,7 @@ const App = () => {
     >
       <Router>
         <GlobalStyles />
+        <Typograhpy />
         <Switch>
           <Route exact path="/">
             <Index />

@@ -136,7 +136,7 @@ const CoffeePlaces = ({ findMoreCoffee }) => {
             return (
               <Place key={place.id}>
                 <div className="place__img">
-                  <LazyLoad height={250}>
+                  <LazyLoad height={250} once>
                     <img
                       src={place.image_url}
                       alt={place.name}

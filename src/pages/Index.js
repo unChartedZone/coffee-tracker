@@ -1,10 +1,4 @@
-import React, {
-  useEffect,
-  useState,
-  useRef,
-  useCallback,
-  useContext,
-} from 'react';
+import React, { useEffect, useRef, useCallback, useContext } from 'react';
 import axios from 'axios';
 
 import CoffeeContext from '../context/coffee-context';
@@ -25,14 +19,10 @@ const Index = () => {
     places,
     setPlaces,
     location,
-    setLocation,
-    errorMessage,
     setErrorMessage,
-    loaded,
     setLoaded,
     loading,
     setLoading,
-    loadingMorePlaces,
     setLoadingMorePlaces,
     offset,
     setOffset,
@@ -43,7 +33,7 @@ const Index = () => {
   // set isMounted to false when we unmount the component
   useEffect(() => {
     console.log('MOUNTED');
-    console.log('MOUNTED & PLACES', places);
+    // console.log('MOUNTED & PLACES', places);
 
     return () => {
       isMounted.current = false;
@@ -87,7 +77,15 @@ const Index = () => {
         if (isMounted.current) setLoading(false); // only update if we are still mounted
       }
     },
-    [loading, location] // update the callback if the state changes
+    [
+      loading,
+      location,
+      setErrorMessage,
+      setLoaded,
+      setLoading,
+      setOffset,
+      setPlaces,
+    ] // update the callback if the state changes
   );
 
   const findMoreCoffee = useCallback(async () => {
@@ -110,7 +108,8 @@ const Index = () => {
     } finally {
       setLoadingMorePlaces(false);
     }
-  }, [location, offset, places]);
+  }, [location, offset, places, setLoadingMorePlaces, setOffset, setPlaces]);
+
   return (
     <main>
       <Header />

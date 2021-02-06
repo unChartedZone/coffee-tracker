@@ -19,13 +19,6 @@ const GlobalStyles = createGlobalStyle`
     background-size: cover;
   }
 
-  .title {
-    font-size: 3rem;
-  }
-
-  .text {
-    font-size: 1.6rem;
-  }
 `;
 
 export default GlobalStyles;
