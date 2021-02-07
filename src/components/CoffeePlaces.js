@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import CoffeeContext from '../context/coffee-context';
 import styled from 'styled-components';
 import LazyLoad from 'react-lazyload';
@@ -107,7 +107,8 @@ const Place = styled.li`
 `;
 
 const CoffeePlaces = ({ findMoreCoffee }) => {
-  const { places, loaded, loadingMorePlaces } = useContext(CoffeeContext);
+  const { setPlace, places, loaded, loadingMorePlaces } = useContext(CoffeeContext);
+  const history = useHistory();
 
   const MoreLocations = () => {
     if (loaded) {
@@ -128,6 +129,11 @@ const CoffeePlaces = ({ findMoreCoffee }) => {
     } else return null;
   };
 
+  const goToPlaceView = (place) => {
+    history.push(`/${place.alias}`)
+    setPlace({...place})
+  }
+
   return (
     <>
       <PlacesStyled>
@@ -146,9 +152,10 @@ const CoffeePlaces = ({ findMoreCoffee }) => {
                 </div>
                 <div className="place__content">
                   <div className="place__header">
-                    <Link to={`/${place.alias}`} className="place__title">
-                      {place.name}
-                    </Link>
+                    <a className="place__title" onClick={() => goToPlaceView(place)}>{place.name} </a>
+                    {/* <Link to={`/${place.alias}`} className="place__title"> */}
+                    {/*   {place.name} */}
+                    {/* </Link> */}
                   </div>
                   <div className="place__body">
                     <div className="place__info">

@@ -14,6 +14,7 @@ import CoffeeView from './pages/CoffeeView';
 
 const App = () => {
   // TODO: Use a reducer to simply all of this
+  const [place, setPlace] = useState({});
   const [places, setPlaces] = useState([]);
   const [location, setLocation] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -25,6 +26,8 @@ const App = () => {
   return (
     <CoffeeContext.Provider
       value={{
+        place,
+        setPlace,
         places,
         setPlaces,
         location,

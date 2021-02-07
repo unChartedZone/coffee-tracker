@@ -60,6 +60,7 @@ const Index = () => {
         setErrorMessage('');
         let response = await instance.get('/.netlify/functions/places', {
           params: {
+            context: 'search',
             term: 'coffee',
             location,
             limit: 9,

@@ -8,10 +8,16 @@ const headers = {
   "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
 };
 
-exports.handler = async function (event, context, callback) {
+exports.handler = async function (event) {
   const apiKey = `${process.env.REACT_APP_YELP_API_KEY}`;
   const client = yelp.client(apiKey);
-  const { term, location, limit, offset } = event.queryStringParameters;
+  const {
+    context,
+    term,
+    location,
+    limit,
+    offset,
+  } = event.queryStringParameters;
 
   const searchRequest = {
     term,
@@ -19,6 +25,16 @@ exports.handler = async function (event, context, callback) {
     limit,
     offset,
   };
+
+  if (context === "alias") {
+    return {
+      statusCode: 200,
+      headers,
+      body: JSON.stringify({
+        message: "Doing an alias lookup",
+      }),
+    };
+  }
 
   let res = null;
 
