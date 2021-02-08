@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import CoffeeContext from '../context/coffee-context';
 import styled from 'styled-components';
 import LazyLoad from 'react-lazyload';
@@ -152,10 +152,15 @@ const CoffeePlaces = ({ findMoreCoffee }) => {
                 </div>
                 <div className="place__content">
                   <div className="place__header">
-                    <a className="place__title" onClick={() => goToPlaceView(place)}>{place.name} </a>
-                    {/* <Link to={`/${place.alias}`} className="place__title"> */}
-                    {/*   {place.name} */}
-                    {/* </Link> */}
+                    {/* <button */} 
+                    {/*   className="place__title" */} 
+                    {/*   onClick={() => goToPlaceView(place)} */}
+                    {/* > */}
+                    {/*   {place.name} */} 
+                    {/* </button> */}
+                    <Btn text onClick={() => goToPlaceView(place)}>
+                      <h1 className="place__title">{place.name}</h1>
+                    </Btn>
                   </div>
                   <div className="place__body">
                     <div className="place__info">

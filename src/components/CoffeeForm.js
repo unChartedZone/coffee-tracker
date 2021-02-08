@@ -19,16 +19,16 @@ const CoffeeForm = ({ findCoffee }) => {
     CoffeeContext
   );
 
-  const handleClick = (e) => {
-    console.log(e);
-    console.log('Using Location!');
+  // const handleClick = (e) => {
+  //   console.log(e);
+  //   console.log('Using Location!');
 
-    navigator.permissions.query({ name: 'geolocation' }).then((result) => {
-      console.log('Result: ', result);
-      navigator.geolocation.getCurrentPosition((position) => {
-        console.log(position);
-      });
-    });
+  //   navigator.permissions.query({ name: 'geolocation' }).then((result) => {
+  //     console.log('Result: ', result);
+  //     navigator.geolocation.getCurrentPosition((position) => {
+  //       console.log(position);
+  //     });
+  //   });
 
     //   navigator.permissions.query({name:'geolocation'}).then(function(result) {
     // if (result.state == 'granted') {
@@ -45,7 +45,7 @@ const CoffeeForm = ({ findCoffee }) => {
     // result.onchange = function() {
     //   report(result.state);
     // }
-  };
+  // };
 
   return (
     <CoffeeFormStyles>
@@ -63,15 +63,15 @@ const CoffeeForm = ({ findCoffee }) => {
           </Btn>
         </form>
         <div>
-          <p
-            className="text text-center"
-            style={{ fontFamily: 'Lobster', margin: '1rem 0' }}
-          >
-            OR
-          </p>
-          <Btn block onClick={(event) => handleClick(event)}>
-            Use My Location
-          </Btn>
+          {/* <p */}
+          {/*   className="text text-center" */}
+          {/*   style={{ fontFamily: 'Lobster', margin: '1rem 0' }} */}
+          {/* > */}
+          {/*   OR */}
+          {/* </p> */}
+          {/* <Btn block onClick={(event) => handleClick(event)}> */}
+          {/*   Use My Location */}
+          {/* </Btn> */}
         </div>
       </div>
     </CoffeeFormStyles>

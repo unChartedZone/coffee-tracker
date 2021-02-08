@@ -12,13 +12,24 @@ const instance = axios.create({
 });
 
 const PlaceStyles = styled.div`
+  border: 1px solid red;
+  width: 100rem;
+  margin: 0 auto;
+
   img {
+    border-radius: 8px;
+    width: 40rem;
     height: 30rem;
+    object-fit: cover;
+  }
+
+  h1 {
+    font-size: 4.8rem;
   }
 `;
 
 const CoffeeView = () => {
-  const { place } = useContext(CoffeeContext);
+  const { place, setPlace } = useContext(CoffeeContext);
   let { id } = useParams();
 
   useEffect(() => {
@@ -33,11 +44,13 @@ const CoffeeView = () => {
         });
 
         console.log('Response: ', response);
+
+        setPlace(response.data);
       };
 
       fetchPlace();
     }
-  }, []);
+  }, [id, place]);
 
   return (
     <CoffeeContext.Provider>

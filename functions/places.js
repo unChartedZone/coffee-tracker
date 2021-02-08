@@ -17,6 +17,7 @@ exports.handler = async function (event) {
     location,
     limit,
     offset,
+    alias,
   } = event.queryStringParameters;
 
   const searchRequest = {
@@ -27,13 +28,29 @@ exports.handler = async function (event) {
   };
 
   if (context === "alias") {
-    return {
-      statusCode: 200,
-      headers,
-      body: JSON.stringify({
-        message: "Doing an alias lookup",
-      }),
-    };
+
+    try {
+      let res = await client.business(alias)
+
+      return {
+        statusCode: 200,
+        headers,
+        body: JSON.stringify({
+          // message: "Doing an alias lookup",
+          // alias,
+          ...res.jsonBody
+        }),
+      };
+    }
+    catch(e) {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({
+          message: 'Bad alias lookup.'
+        })
+      }
+    }
   }
 
   let res = null;
