@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react';
+import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
@@ -9,6 +10,12 @@ const baseURL = process.env.REACT_APP_BASE_API_URL;
 const instance = axios.create({
   baseURL: baseURL,
 });
+
+const PlaceStyles = styled.div`
+  img {
+    height: 30rem;
+  }
+`;
 
 const CoffeeView = () => {
   const { place } = useContext(CoffeeContext);
@@ -34,11 +41,11 @@ const CoffeeView = () => {
 
   return (
     <CoffeeContext.Provider>
-      <div>
+      <PlaceStyles>
         <img src={place.image_url} alt="" />
         <Link to="/">Back</Link>
         <h1>{place.name}</h1>
-      </div>
+      </PlaceStyles>
     </CoffeeContext.Provider>
   );
 };
