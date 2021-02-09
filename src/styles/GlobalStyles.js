@@ -8,6 +8,10 @@ const GlobalStyles = createGlobalStyle`
     font-family: Arial, Helvetica, sans-serif;
   }
 
+  body {
+    font-size: 1.6rem;
+  }
+
   * {
     margin: 0;
     padding: 0;
