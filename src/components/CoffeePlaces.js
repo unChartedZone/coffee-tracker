@@ -7,6 +7,8 @@ import LazyLoad from 'react-lazyload';
 import fallbackImage from '../assets/images/coffee-shop-bg.jpg';
 import { device } from '../helpers/device';
 import Btn from './Btn.js';
+// import Star from '../assets/icons/Star';
+import { ReactComponent as Star } from '../assets/icons/Star.svg';
 
 const PlacesStyled = styled.div`
   margin: 8rem 0;
@@ -107,7 +109,9 @@ const Place = styled.li`
 `;
 
 const CoffeePlaces = ({ findMoreCoffee }) => {
-  const { setPlace, places, loaded, loadingMorePlaces } = useContext(CoffeeContext);
+  const { setPlace, places, loaded, loadingMorePlaces } = useContext(
+    CoffeeContext
+  );
   const history = useHistory();
 
   const MoreLocations = () => {
@@ -130,9 +134,9 @@ const CoffeePlaces = ({ findMoreCoffee }) => {
   };
 
   const goToPlaceView = (place) => {
-    history.push(`/${place.alias}`)
-    setPlace({...place})
-  }
+    history.push(`/${place.alias}`);
+    setPlace({ ...place });
+  };
 
   return (
     <>
@@ -152,11 +156,11 @@ const CoffeePlaces = ({ findMoreCoffee }) => {
                 </div>
                 <div className="place__content">
                   <div className="place__header">
-                    {/* <button */} 
-                    {/*   className="place__title" */} 
+                    {/* <button */}
+                    {/*   className="place__title" */}
                     {/*   onClick={() => goToPlaceView(place)} */}
                     {/* > */}
-                    {/*   {place.name} */} 
+                    {/*   {place.name} */}
                     {/* </button> */}
                     <Btn text onClick={() => goToPlaceView(place)}>
                       <h1 className="place__title">{place.name}</h1>
@@ -169,19 +173,7 @@ const CoffeePlaces = ({ findMoreCoffee }) => {
                         {place.location.state} {place.location.zip_code}
                       </p>
                       <dt className="place__rating">
-                        <svg width="16" height="23" fill="currentColor">
-                          <path
-                            d="M7.05 3.691c.3-.921 1.603-.921 1.902 0l1.07
-                      3.292a1 1 0 00.95.69h3.462c.969 0 1.372 1.24.588
-                      1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07
-                      3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0
-                      00-1.176 0l-2.8
-                      2.034c-.783.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0
-                      00-.363-1.118L.98
-                      9.483c-.784-.57-.381-1.81.587-1.81H5.03a1 1 0
-                      00.95-.69L7.05 3.69z"
-                          />
-                        </svg>
+                        <Star height="2rem" />
                         <span>{place.rating}</span>
                       </dt>
                     </div>

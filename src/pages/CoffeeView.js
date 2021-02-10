@@ -1,9 +1,11 @@
 import React, { useEffect, useContext } from 'react';
+import LazyLoad from 'react-lazyload';
 import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import CoffeeContext from '../context/coffee-context';
+import { ReactComponent as LeftArrow } from '../assets/icons/LeftArrow.svg';
 
 const baseURL = process.env.REACT_APP_BASE_API_URL;
 
@@ -18,8 +20,8 @@ const PlaceStyles = styled.div`
 
   .place {
     &__banner {
-      border: 3px solid black;
       border-radius: 8px;
+      box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.3);
       width: 100rem;
       height: 40rem;
       object-fit: cover;
@@ -29,13 +31,14 @@ const PlaceStyles = styled.div`
 
     &__images {
       display: flex;
-      justify-content: space-between;
+      justify-content: start;
     }
 
     &__image {
       border-radius: 8px;
       height: 15rem;
       width: 15rem;
+      margin: 0 1.75rem 0 0;
     }
   }
 
@@ -45,11 +48,15 @@ const PlaceStyles = styled.div`
 
   .back-link {
     position: absolute;
-    color: black;
+    color: #676464;
     top: 1rem;
     left: 1rem;
     font-size: 1.6rem;
     text-decoration: none;
+
+    &:hover {
+      color: #000000;
+    }
   }
 
   .address {
@@ -64,8 +71,8 @@ const PlaceStyles = styled.div`
   .category {
     border: 1px solid #653207bf;
     border-radius: 20px;
-    background-color: #6532071f;
-    color: #6f5a42;
+    background-color: #fef3c7;
+    color: #b45309;
     padding: 0.6rem 1rem;
     margin-right: 1rem;
   }
@@ -99,10 +106,12 @@ const CoffeeView = () => {
     <CoffeeContext.Provider>
       <PlaceStyles>
         <Link className="back-link" to="/">
-          BACK
+          <LeftArrow height="2rem" />
         </Link>
 
-        <img className="place__banner" src={place.image_url} alt="" />
+        <LazyLoad height={400} once>
+          <img className="place__banner" src={place.image_url} alt="" />
+        </LazyLoad>
 
         <h1>{place.name}</h1>
 
@@ -121,10 +130,16 @@ const CoffeeView = () => {
           })}
         </div>
 
-        <h2>More Images</h2>
-        <div className="place__images">
+        <div className="place__images my-2">
           {place.photos?.map((photo) => (
-            <img key={photo} className="place__image" src={photo} />
+            <LazyLoad height={150} once>
+              <img
+                key={photo}
+                className="place__image"
+                src={photo}
+                alt="A coffe shop"
+              />
+            </LazyLoad>
           ))}
         </div>
       </PlaceStyles>
