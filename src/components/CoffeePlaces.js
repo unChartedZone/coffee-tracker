@@ -1,11 +1,15 @@
 import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import CoffeeContext from '../context/coffee-context';
 import styled from 'styled-components';
 import LazyLoad from 'react-lazyload';
 
 import fallbackImage from '../assets/images/coffee-shop-bg.jpg';
 import { device } from '../helpers/device';
-import Btn from './Btn.js';
+import Btn from './Btn';
+import Categories from './Categories';
+// import Star from '../assets/icons/Star';
+import { ReactComponent as Star } from '../assets/icons/Star.svg';
 
 const PlacesStyled = styled.div`
   margin: 8rem 0;
@@ -38,14 +42,14 @@ const Place = styled.li`
   border-radius: 7px;
   background-color: white;
   color: black;
-  height: 40rem;
-  width: 35.5rem;
+  min-height: 40rem;
+  width: 35rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
   overflow: hidden;
 
   @media ${device.tablet} {
-    width: 45rem;
+    width: 47.5rem;
   }
 
   &:hover img {
@@ -66,33 +70,50 @@ const Place = styled.li`
       }
     }
 
-    &__header,
-    &__body {
-      padding: 0.5rem;
+    &__content {
+      padding: 1rem 0.95rem;
     }
 
-    &__body {
+    &__title {
+      color: black;
+      font-size: 3rem;
+      text-decoration: none;
+    }
+
+    &__info {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
     &__address {
-      color: #4c4e4c;
+      color: rgba(107, 114, 128);
     }
 
     &__rating {
       background-color: #f2d024;
       border-radius: 7px;
       color: black;
-      display: inline-block;
       padding: 0.3rem 0.5rem;
+      display: flex;
+      align-items: center;
+
+      span {
+        padding-left: 0.5rem;
+      }
+    }
+
+    &__categories {
+      display: flex;
     }
   }
 `;
 
 const CoffeePlaces = ({ findMoreCoffee }) => {
-  const { places, loaded, loadingMorePlaces } = useContext(CoffeeContext);
+  const { setPlace, places, loaded, loadingMorePlaces } = useContext(
+    CoffeeContext
+  );
+  const history = useHistory();
 
   const MoreLocations = () => {
     if (loaded) {
@@ -113,6 +134,11 @@ const CoffeePlaces = ({ findMoreCoffee }) => {
     } else return null;
   };
 
+  const goToPlaceView = (place) => {
+    history.push(`/${place.alias}`);
+    setPlace({ ...place });
+  };
+
   return (
     <>
       <PlacesStyled>
@@ -121,7 +147,7 @@ const CoffeePlaces = ({ findMoreCoffee }) => {
             return (
               <Place key={place.id}>
                 <div className="place__img">
-                  <LazyLoad height={250}>
+                  <LazyLoad height={250} once>
                     <img
                       src={place.image_url}
                       alt={place.name}
@@ -129,15 +155,25 @@ const CoffeePlaces = ({ findMoreCoffee }) => {
                     />
                   </LazyLoad>
                 </div>
-                <div className="place__header">
-                  <h1 className="place__title title">{place.name}</h1>
-                </div>
-                <div className="place__body">
-                  <p className="place__address">
-                    {place.location.address1}, {place.location.city},
-                    {place.location.zip_code}
-                  </p>
-                  <p className="place__rating">{place.rating}</p>
+                <div className="place__content">
+                  <div className="place__header">
+                    <Btn text onClick={() => goToPlaceView(place)}>
+                      <h1 className="place__title">{place.name}</h1>
+                    </Btn>
+                  </div>
+                  <div className="place__body">
+                    <div className="place__info">
+                      <p className="place__address">
+                        {place.location.address1}, {place.location.city},{' '}
+                        {place.location.state} {place.location.zip_code}
+                      </p>
+                      <dt className="place__rating">
+                        <Star height="2rem" />
+                        <span>{place.rating}</span>
+                      </dt>
+                    </div>
+                    <Categories categories={place.categories} />
+                  </div>
                 </div>
               </Place>
             );

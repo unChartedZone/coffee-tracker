@@ -8,6 +8,10 @@ const GlobalStyles = createGlobalStyle`
     font-family: Arial, Helvetica, sans-serif;
   }
 
+  body {
+    font-size: 1.6rem;
+  }
+
   * {
     margin: 0;
     padding: 0;
@@ -19,13 +23,35 @@ const GlobalStyles = createGlobalStyle`
     background-size: cover;
   }
 
-  .title {
-    font-size: 3rem;
+  // Utilities Classes
+  .m {
+    &x-1 {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+    &x-2 {
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
+    &x-3 {
+      margin-left: 3rem;
+      margin-right: 3rem;
+    }
+
+    &y-1 {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    &y-2 {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    &y-3 {
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+    }
   }
 
-  .text {
-    font-size: 1.6rem;
-  }
 `;
 
 export default GlobalStyles;

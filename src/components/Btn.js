@@ -18,6 +18,19 @@ const ButtonStyles = styled.button`
     transform: scale(1.05) translateY(-0.2rem);
   } */
 
+  ${(props) => 
+    props.text && 
+    css`
+      border: none;
+      padding: 0;
+
+      &:hover {
+        //background-color: red;
+        text-decoration: underline;
+      }
+  `}
+
+
   ${(props) =>
     props.block &&
     css`
@@ -61,9 +74,9 @@ const LoadingIcon = styled.div`
   }
 `;
 
-const Button = ({ children, onClick, type, block, loading }) => {
+const Button = ({ children, onClick, type, block, loading, text }) => {
   return (
-    <ButtonStyles block={block} type={type} onClick={onClick}>
+    <ButtonStyles block={block} text={text} type={type} onClick={onClick}>
       {loading ? <LoadingIcon /> : null}
       {children}
     </ButtonStyles>
