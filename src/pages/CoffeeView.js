@@ -6,6 +6,7 @@ import axios from 'axios';
 
 import CoffeeContext from '../context/coffee-context';
 import { ReactComponent as LeftArrow } from '../assets/icons/LeftArrow.svg';
+import Categories from '../components/Categories';
 
 const baseURL = process.env.REACT_APP_BASE_API_URL;
 
@@ -63,19 +64,6 @@ const PlaceStyles = styled.div`
     color: #676464;
     margin: 0.5rem 0 1rem 0;
   }
-
-  .categories {
-    display: flex;
-  }
-
-  .category {
-    border: 1px solid #653207bf;
-    border-radius: 20px;
-    background-color: #fef3c7;
-    color: #b45309;
-    padding: 0.6rem 1rem;
-    margin-right: 1rem;
-  }
 `;
 
 const CoffeeView = () => {
@@ -119,26 +107,11 @@ const CoffeeView = () => {
           {place.location?.display_address[0]},{' '}
           {place.location?.display_address[1]}
         </p>
-
-        <div className="categories">
-          {place.categories?.map((category) => {
-            return (
-              <div className="category" key={category.title}>
-                {category.title}
-              </div>
-            );
-          })}
-        </div>
-
+        <Categories categories={place?.categories} />
         <div className="place__images my-2">
           {place.photos?.map((photo) => (
-            <LazyLoad height={150} once>
-              <img
-                key={photo}
-                className="place__image"
-                src={photo}
-                alt="A coffe shop"
-              />
+            <LazyLoad height={150} once key={photo}>
+              <img className="place__image" src={photo} alt="A coffe shop" />
             </LazyLoad>
           ))}
         </div>

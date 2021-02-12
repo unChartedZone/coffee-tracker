@@ -6,7 +6,8 @@ import LazyLoad from 'react-lazyload';
 
 import fallbackImage from '../assets/images/coffee-shop-bg.jpg';
 import { device } from '../helpers/device';
-import Btn from './Btn.js';
+import Btn from './Btn';
+import Categories from './Categories';
 // import Star from '../assets/icons/Star';
 import { ReactComponent as Star } from '../assets/icons/Star.svg';
 
@@ -41,14 +42,14 @@ const Place = styled.li`
   border-radius: 7px;
   background-color: white;
   color: black;
-  height: 40rem;
-  width: 35.5rem;
+  min-height: 40rem;
+  width: 35rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
   overflow: hidden;
 
   @media ${device.tablet} {
-    width: 45rem;
+    width: 47.5rem;
   }
 
   &:hover img {
@@ -156,12 +157,6 @@ const CoffeePlaces = ({ findMoreCoffee }) => {
                 </div>
                 <div className="place__content">
                   <div className="place__header">
-                    {/* <button */}
-                    {/*   className="place__title" */}
-                    {/*   onClick={() => goToPlaceView(place)} */}
-                    {/* > */}
-                    {/*   {place.name} */}
-                    {/* </button> */}
                     <Btn text onClick={() => goToPlaceView(place)}>
                       <h1 className="place__title">{place.name}</h1>
                     </Btn>
@@ -177,15 +172,7 @@ const CoffeePlaces = ({ findMoreCoffee }) => {
                         <span>{place.rating}</span>
                       </dt>
                     </div>
-                    <ul className="place__categories">
-                      {place.categories.map((category) => {
-                        return (
-                          <li key={category.alias} className="place__category">
-                            {category.title}
-                          </li>
-                        );
-                      })}
-                    </ul>
+                    <Categories categories={place.categories} />
                   </div>
                 </div>
               </Place>
