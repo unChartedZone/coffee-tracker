@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useCallback } from 'react';
 import LazyLoad from 'react-lazyload';
 import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom';
@@ -70,25 +70,21 @@ const CoffeeView = () => {
   const { place, setPlace } = useContext(CoffeeContext);
   let { id } = useParams();
 
+  const fetchPlace = useCallback(async () => {
+    console.log('Fetching Place');
+    let response = await instance.get('/.netlify/functions/places', {
+      params: {
+        context: 'alias',
+        alias: id,
+      },
+    });
+
+    setPlace(response.data);
+  }, [id, setPlace]);
+
   useEffect(() => {
-    if (Object.entries(place).length === 0) {
-      // console.log('GONNA DO AN API CALL!');
-      const fetchPlace = async () => {
-        let response = await instance.get('/.netlify/functions/places', {
-          params: {
-            context: 'alias',
-            alias: id,
-          },
-        });
-
-        console.log('Response: ', response);
-
-        setPlace(response.data);
-      };
-
-      fetchPlace();
-    }
-  }, [id, place, setPlace]);
+    fetchPlace();
+  }, [fetchPlace]);
 
   return (
     <CoffeeContext.Provider>
