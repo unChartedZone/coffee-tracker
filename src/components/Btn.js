@@ -1,5 +1,14 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+
+const spinning = keyframes`
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+`;
 
 const ButtonStyles = styled.button`
   font-size: 1.6rem;
@@ -9,17 +18,14 @@ const ButtonStyles = styled.button`
   cursor: pointer;
   padding: 0.5rem 1rem;
   transition: all 0.2s ease-in-out;
-  min-height: 3rem;
+  min-height: 3.5rem;
+  min-width: 5rem;
   width: initial;
   outline: none;
   position: relative;
 
-  /* &:hover {
-    transform: scale(1.05) translateY(-0.2rem);
-  } */
-
-  ${(props) => 
-    props.text && 
+  ${(props) =>
+    props.text &&
     css`
       border: none;
       padding: 0;
@@ -28,8 +34,7 @@ const ButtonStyles = styled.button`
         //background-color: red;
         text-decoration: underline;
       }
-  `}
-
+    `}
 
   ${(props) =>
     props.block &&
@@ -40,45 +45,19 @@ const ButtonStyles = styled.button`
 `;
 
 const LoadingIcon = styled.div`
-  display: inline-block;
-  position: absolute;
-  width: 90%;
-  height: 1.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  user-select: none;
-  background-color: white;
-
-  &:after {
-    content: '';
-    display: block;
-    /* position: absolute; */
-    width: 1.2rem;
-    height: 1.2rem;
-    border-radius: 50%;
-    border: 2px solid black;
-    /* this breaks up the icon into 2 pieces */
-    border-color: black transparent black transparent;
-    user-select: none;
-    animation: 1s spinning infinite linear;
-  }
-
-  @keyframes spinning {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
+  width: 20px;
+  height: 20px;
+  border: 2px solid black;
+  border-radius: 50%;
+  border-color: black transparent black transparent;
+  margin: 0 auto;
+  animation: ${spinning} infinite 0.5s linear;
 `;
 
 const Button = ({ children, onClick, type, block, loading, text }) => {
   return (
     <ButtonStyles block={block} text={text} type={type} onClick={onClick}>
-      {loading ? <LoadingIcon /> : null}
-      {children}
+      {loading ? <LoadingIcon /> : children}
     </ButtonStyles>
   );
 };
