@@ -145,7 +145,12 @@ const CoffeePlaces = ({ findMoreCoffee }) => {
             return (
               <Place key={place.id}>
                 <div className="place__img">
-                  <Image height={250} src={place.image_url} alt={place.name} />
+                  <Image
+                    height={250}
+                    src={place.image_url}
+                    alt={place.name}
+                    offset={200}
+                  />
                 </div>
                 <div className="place__content">
                   <div className="place__header">

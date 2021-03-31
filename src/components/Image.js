@@ -4,7 +4,7 @@ import fallbackImage from '../assets/images/coffee-shop-bg.jpg';
 
 import GhostLoader from './GhostLoader';
 
-const Image = ({ src, alt, height }) => {
+const Image = ({ src, alt, height, offset }) => {
   const refPlaceholder = useRef();
 
   const removePlaceholder = () => {
@@ -14,12 +14,12 @@ const Image = ({ src, alt, height }) => {
   return (
     <>
       <GhostLoader ref={refPlaceholder} />
-      <LazyLoad height={height} once>
+      <LazyLoad height={height} offset={offset} once>
         <img
           src={src}
           alt={alt}
           onLoad={removePlaceholder}
-          error={(el) => (el.currentTarget.src = fallbackImage)}
+          onError={(el) => (el.currentTarget.src = fallbackImage)}
         />
       </LazyLoad>
     </>
