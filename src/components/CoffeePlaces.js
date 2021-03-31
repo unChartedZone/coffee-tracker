@@ -2,14 +2,11 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import CoffeeContext from '../context/coffee-context';
 import styled from 'styled-components';
-import LazyLoad from 'react-lazyload';
 
-import fallbackImage from '../assets/images/coffee-shop-bg.jpg';
 import { device } from '../helpers/device';
 import Btn from './Btn';
+import Image from './Image';
 import Categories from './Categories';
-import GhostLoader from './GhostLoader';
-// import Star from '../assets/icons/Star';
 import { ReactComponent as Star } from '../assets/icons/Star.svg';
 
 const PlacesStyled = styled.div`
@@ -148,13 +145,7 @@ const CoffeePlaces = ({ findMoreCoffee }) => {
             return (
               <Place key={place.id}>
                 <div className="place__img">
-                  <LazyLoad height={250} once placeholder={<GhostLoader />}>
-                    <img
-                      src={place.image_url}
-                      alt={place.name}
-                      onError={(el) => (el.currentTarget.src = fallbackImage)}
-                    />
-                  </LazyLoad>
+                  <Image height={250} src={place.image_url} alt={place.name} />
                 </div>
                 <div className="place__content">
                   <div className="place__header">
