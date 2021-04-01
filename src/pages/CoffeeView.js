@@ -3,9 +3,9 @@ import LazyLoad from 'react-lazyload';
 import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
+import { VscArrowLeft as LeftArrow } from 'react-icons/vsc';
 
 import CoffeeContext from '../context/coffee-context';
-import { ReactComponent as LeftArrow } from '../assets/icons/LeftArrow.svg';
 import Categories from '../components/Categories';
 
 const baseURL = process.env.REACT_APP_BASE_API_URL;
@@ -49,10 +49,10 @@ const PlaceStyles = styled.div`
 
   .back-link {
     position: absolute;
-    color: #676464;
+    color: #555;
     top: 1rem;
     left: 1rem;
-    font-size: 1.6rem;
+    font-size: 2.6rem;
     text-decoration: none;
 
     &:hover {

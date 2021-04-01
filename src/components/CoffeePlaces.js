@@ -7,7 +7,7 @@ import { device } from '../helpers/device';
 import Btn from './Btn';
 import Image from './Image';
 import Categories from './Categories';
-import { ReactComponent as Star } from '../assets/icons/Star.svg';
+import { AiFillStar as Star } from 'react-icons/ai';
 
 const PlacesStyled = styled.div`
   margin: 8rem 0;
@@ -165,7 +165,7 @@ const CoffeePlaces = ({ findMoreCoffee }) => {
                         {place.location.state} {place.location.zip_code}
                       </p>
                       <dt className="place__rating">
-                        <Star height="2rem" />
+                        <Star />
                         <span>{place.rating}</span>
                       </dt>
                     </div>
