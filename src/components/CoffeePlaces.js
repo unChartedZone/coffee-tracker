@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import CoffeeContext from '../context/coffee-context';
 import styled from 'styled-components';
@@ -108,11 +108,42 @@ const Place = styled.li`
   }
 `;
 
-const CoffeePlaces = ({ findMoreCoffee }) => {
-  const { setPlace, places, loaded, loadingMorePlaces } = useContext(
-    CoffeeContext
-  );
+const CoffeePlaces = () => {
+  const {
+    loaded,
+    places,
+    setPlaces,
+    location,
+    loadingMorePlaces,
+    setLoadingMorePlaces,
+    offset,
+    setOffset,
+    setPlace,
+  } = useContext(CoffeeContext);
+
   const history = useHistory();
+
+  const findMoreCoffee = useCallback(async () => {
+    try {
+      setLoadingMorePlaces(true);
+      let response = await http.get('/.netlify/functions/places', {
+        params: {
+          term: 'coffee',
+          location,
+          limit: 9,
+          offset,
+        },
+      });
+
+      let data = JSON.parse(response.data.res.body);
+      setPlaces([...places, ...data.businesses]);
+      setOffset(offset + 9);
+    } catch (e) {
+      console.log('Errors fetching more coffee places', e);
+    } finally {
+      setLoadingMorePlaces(false);
+    }
+  }, [location, offset, places, setLoadingMorePlaces, setOffset, setPlaces]);
 
   const MoreLocations = () => {
     if (loaded) {

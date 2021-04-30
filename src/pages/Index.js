@@ -1,7 +1,4 @@
-import React, { useEffect, useRef, useCallback, useContext } from 'react';
-import axios from 'axios';
-
-import CoffeeContext from '../context/coffee-context';
+import React from 'react';
 
 // Components
 import Header from '../components/Header';
@@ -13,6 +10,7 @@ const Index = () => {
     <main>
       <Header />
       <CoffeeForm />
+      <CoffeePlaces />
     </main>
   );
 };
