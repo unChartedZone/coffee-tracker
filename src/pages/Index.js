@@ -12,8 +12,7 @@ const Index = () => {
   return (
     <main>
       <Header />
-      <CoffeeForm findCoffee={findCoffee} />
-      <CoffeePlaces findMoreCoffee={findMoreCoffee} />
+      <CoffeeForm />
     </main>
   );
 };

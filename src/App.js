@@ -20,7 +20,6 @@ const App = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [offset, setOffset] = useState(0);
   const [loaded, setLoaded] = useState(false);
-  const [loading, setLoading] = useState(false); // Controls wether to show loading animation or not
   const [loadingMorePlaces, setLoadingMorePlaces] = useState(false);
 
   return (
@@ -36,8 +35,6 @@ const App = () => {
         setErrorMessage,
         loaded,
         setLoaded,
-        loading,
-        setLoading,
         loadingMorePlaces,
         setLoadingMorePlaces,
         offset,
