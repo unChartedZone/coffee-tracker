@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import CoffeeContext from '../context/coffee-context';
 import styled from 'styled-components';
 
+import http from '../http';
 import { device } from '../helpers/device';
 import Btn from './Btn';
 import Image from './Image';

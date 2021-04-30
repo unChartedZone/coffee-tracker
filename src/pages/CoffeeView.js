@@ -87,32 +87,30 @@ const CoffeeView = () => {
   }, [fetchPlace]);
 
   return (
-    <CoffeeContext.Provider>
-      <PlaceStyles>
-        <Link className="back-link" to="/">
-          <LeftArrow height="2rem" />
-        </Link>
+    <PlaceStyles>
+      <Link className="back-link" to="/">
+        <LeftArrow height="2rem" />
+      </Link>
 
-        <LazyLoad height={400} once>
-          <img className="place__banner" src={place.image_url} alt="" />
-        </LazyLoad>
+      <LazyLoad height={400} once>
+        <img className="place__banner" src={place.image_url} alt="" />
+      </LazyLoad>
 
-        <h1>{place.name}</h1>
+      <h1>{place.name}</h1>
 
-        <p className="address">
-          {place.location?.display_address[0]},{' '}
-          {place.location?.display_address[1]}
-        </p>
-        <Categories categories={place?.categories} />
-        <div className="place__images my-2">
-          {place.photos?.map((photo) => (
-            <LazyLoad height={150} once key={photo}>
-              <img className="place__image" src={photo} alt="A coffe shop" />
-            </LazyLoad>
-          ))}
-        </div>
-      </PlaceStyles>
-    </CoffeeContext.Provider>
+      <p className="address">
+        {place.location?.display_address[0]},{' '}
+        {place.location?.display_address[1]}
+      </p>
+      <Categories categories={place?.categories} />
+      <div className="place__images my-2">
+        {place.photos?.map((photo) => (
+          <LazyLoad height={150} once key={photo}>
+            <img className="place__image" src={photo} alt="A coffe shop" />
+          </LazyLoad>
+        ))}
+      </div>
+    </PlaceStyles>
   );
 };
 
