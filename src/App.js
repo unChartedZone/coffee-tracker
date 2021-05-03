@@ -17,7 +17,6 @@ const App = () => {
   const [place, setPlace] = useState({});
   const [places, setPlaces] = useState([]);
   const [location, setLocation] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
   const [offset, setOffset] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [loadingMorePlaces, setLoadingMorePlaces] = useState(false);
@@ -31,8 +30,6 @@ const App = () => {
         setPlaces,
         location,
         setLocation,
-        errorMessage,
-        setErrorMessage,
         loaded,
         setLoaded,
         loadingMorePlaces,

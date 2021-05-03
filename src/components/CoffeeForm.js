@@ -23,17 +23,12 @@ const CoffeeFormStyles = styled.div`
 `;
 
 const CoffeeForm = () => {
-  const {
-    location,
-    setLocation,
-    setPlaces,
-    errorMessage,
-    setErrorMessage,
-    setLoaded,
-    setOffset,
-  } = useContext(CoffeeContext);
+  const { location, setLocation, setPlaces, setLoaded, setOffset } = useContext(
+    CoffeeContext
+  );
 
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const isMounted = useRef(true);
 
   // set isMounted to false when we unmount the component
