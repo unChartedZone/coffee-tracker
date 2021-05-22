@@ -23,9 +23,8 @@ const CoffeeFormStyles = styled.div`
 `;
 
 const CoffeeForm = () => {
-  const { location, setLocation, setPlaces, setLoaded, setOffset } = useContext(
-    CoffeeContext
-  );
+  const { location, setLocation, setPlaces, setLoaded, setOffset } =
+    useContext(CoffeeContext);
 
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -93,7 +92,7 @@ const CoffeeForm = () => {
             placeholder="Location"
             type="text"
           />
-          <Btn block type="submit" loading={loading}>
+          <Btn block outlined type="submit" loading={loading}>
             Find Me Coffee
           </Btn>
         </form>
