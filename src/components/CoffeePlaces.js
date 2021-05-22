@@ -67,7 +67,7 @@ const CoffeePlaces = () => {
   }, [location, offset, places, setLoadingMorePlaces, setOffset, setPlaces]);
 
   const MoreLocations = () => {
-    if (loaded) {
+    if (loaded && places.length < 27) {
       return (
         <div
           style={{
