@@ -27,6 +27,11 @@ const ButtonStyles = styled.button`
     color: black;
   }
 
+  &:hover .icon {
+    border: 2px solid black;
+    border-color: black transparent black transparent;
+  }
+
   ${(props) =>
     props.block &&
     css`
@@ -45,6 +50,11 @@ const ButtonStyles = styled.button`
         background-color: black;
         color: white;
       }
+
+      &:hover .icon {
+        border: 2px solid white;
+        border-color: white transparent white transparent;
+      }
     `} 
 
   ${(props) =>
@@ -56,11 +66,6 @@ const ButtonStyles = styled.button`
       &:hover {
         background-color: black;
         text-decoration: underline;
-      }
-
-      &:hover .icon {
-        border: 2px solid white;
-        border-color: white transparent white transparent;
       }
     `}
 `;
