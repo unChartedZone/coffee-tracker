@@ -50,6 +50,16 @@ const GlobalStyles = createGlobalStyle`
       margin-top: 3rem;
       margin-bottom: 3rem;
     }
+
+    &t-1 {
+      margin-top: 1rem;
+    }
+    &t-2 {
+      margin-top: 2rem;
+    }
+    &t-3 {
+      margin-top: 3rem;
+    }
   }
 
 `;
