@@ -19,7 +19,7 @@ const Place = styled.li`
   min-height: 40rem;
   width: 35rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    0 4px 6px -2px rgba(0, 0, 0, 0.05), 0px -2px 20px 3px rgb(0, 0, 0, 0.1);
   overflow: hidden;
 
   // Change color in react icons used in place component
