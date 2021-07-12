@@ -91,6 +91,10 @@ const Place = styled.li`
   }
 `;
 
+const ReviewCount = styled.span`
+  color: var(--dark-gray);
+`;
+
 const CoffeePlaceCard = ({ place }) => {
   const { setPlace } = useContext(CoffeeContext);
   const history = useHistory();
@@ -112,9 +116,7 @@ const CoffeePlaceCard = ({ place }) => {
       </div>
       <div className="place__content">
         <div className="place__header">
-          {/* <Btn text onClick={() => goToPlaceView(place)}> */}
           <h1 className="place__title">{place.name}</h1>
-          {/* </Btn> */}
         </div>
         <div className="place__body">
           <div className="place__info">
@@ -125,6 +127,7 @@ const CoffeePlaceCard = ({ place }) => {
             <dt className="place__rating">
               <Star />
               <span>{place.rating}</span>
+              <ReviewCount>({place.review_count})</ReviewCount>
             </dt>
           </div>
           <Categories categories={place.categories} />
