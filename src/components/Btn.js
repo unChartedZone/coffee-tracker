@@ -10,8 +10,8 @@ const ButtonStyles = styled.button`
   font-size: 1.6rem;
   border-radius: 7px;
   border: none;
-  background-color: black;
-  color: white;
+  background-color: var(--yellow);
+  color: var(--black);
   cursor: pointer;
   padding: 0.5rem 1rem;
   transition: all 0.2s ease-in-out;
@@ -58,6 +58,12 @@ const ButtonStyles = styled.button`
     `} 
 
   ${(props) =>
+    props.rounded &&
+    css`
+      border-radius: 20px;
+    `}
+
+  ${(props) =>
     props.text &&
     css`
       border: none;
@@ -90,6 +96,7 @@ const Button = ({
   onClick,
   type,
   block,
+  rounded,
   loading,
   text,
   className,
@@ -99,6 +106,7 @@ const Button = ({
     <ButtonStyles
       className={className}
       block={block}
+      rounded={rounded}
       text={text}
       type={type}
       onClick={onClick}

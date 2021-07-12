@@ -7,6 +7,7 @@ import { device } from '../helpers/device';
 const HeaderStyled = styled.header`
   @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
+  color: var(--black);
   text-align: center;
 
   .header {
@@ -38,7 +39,7 @@ const HeaderStyled = styled.header`
         content: '';
         width: 0.5rem;
         height: 100%;
-        background-color: black;
+        background-color: var(--black);
       }
 
       &:before {

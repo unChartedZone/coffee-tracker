@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import styled from 'styled-components';
 
 // Styles
 import GlobalStyles from './styles/GlobalStyles';
@@ -11,6 +12,19 @@ import CoffeeContext from './context/coffee-context';
 // Pages
 import Index from './pages/Index';
 import CoffeeView from './pages/CoffeeView';
+
+// Components
+import Footer from './components/Footer';
+
+const AppStyled = styled.main`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
+
+const ContentStyled = styled.div`
+  flex: 1;
+`;
 
 const App = () => {
   // TODO: Use a reducer to simply all of this
@@ -38,18 +52,23 @@ const App = () => {
         setOffset,
       }}
     >
-      <Router>
-        <GlobalStyles />
-        <Typograhpy />
-        <Switch>
-          <Route exact path="/">
-            <Index />
-          </Route>
-          <Route path="/:id">
-            <CoffeeView />
-          </Route>
-        </Switch>
-      </Router>
+      <GlobalStyles />
+      <AppStyled>
+        <ContentStyled>
+          <Router>
+            <Typograhpy />
+            <Switch>
+              <Route exact path="/">
+                <Index />
+              </Route>
+              <Route path="/:id">
+                <CoffeeView />
+              </Route>
+            </Switch>
+          </Router>
+        </ContentStyled>
+        <Footer />
+      </AppStyled>
     </CoffeeContext.Provider>
   );
 };

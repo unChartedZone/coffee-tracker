@@ -10,8 +10,8 @@ const CategoriesStyled = styled.div`
   .category {
     border: 1px solid #653207bf;
     border-radius: 20px;
-    background-color: #fef3c7;
-    color: #b45309;
+    background-color: var(--gray);
+    color: var(--light-black);
     padding: 0.6rem 1rem;
     margin-right: 1rem;
   }

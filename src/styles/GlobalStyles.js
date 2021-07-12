@@ -2,6 +2,16 @@ import { createGlobalStyle } from 'styled-components';
 import bgImg from '../assets/images/coffee-shop-bg.jpg';
 
 const GlobalStyles = createGlobalStyle`
+  :root {
+    --bg-color: #EADBCC;
+    --gray: #DACABD;
+    --dark-gray: #7A7E82;
+    --white: #F4E8DB;
+    --light-black: #433c37;
+    --black: #212325;
+    --yellow: #D4A056;
+  }
+
   html,
   body {
     font-size: 62.5%;
@@ -10,6 +20,7 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     font-size: 1.6rem;
+    background-color: var(--bg-color);
   }
 
   * {

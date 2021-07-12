@@ -92,7 +92,7 @@ const CoffeeForm = () => {
             placeholder="Location"
             type="text"
           />
-          <Btn block outlined type="submit" loading={loading}>
+          <Btn block outlined rounded type="submit" loading={loading}>
             Find Me Coffee
           </Btn>
         </form>
