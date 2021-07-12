@@ -4,11 +4,21 @@ import styled from 'styled-components';
 const TextFieldStyles = styled.div`
   font-size: 2rem;
 
+  &:focus-within input {
+    border-color: var(--black);
+  }
+
   input {
-    padding: 1rem;
+    background-color: var(--gray);
+    padding: 1rem 1.5rem;
     border: 1px solid #aaa;
-    border-radius: 7px;
+    border-radius: 20px;
     font-size: 1.6rem;
+    outline: none;
+
+    &::placeholder {
+      color: #998770;
+    }
   }
 
   .textfield {

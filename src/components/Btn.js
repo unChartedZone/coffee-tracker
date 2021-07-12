@@ -10,8 +10,8 @@ const ButtonStyles = styled.button`
   font-size: 1.6rem;
   border-radius: 7px;
   border: none;
-  background-color: black;
-  color: white;
+  background-color: var(--yellow);
+  color: var(--black);
   cursor: pointer;
   padding: 0.5rem 1rem;
   transition: all 0.2s ease-in-out;

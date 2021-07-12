@@ -12,10 +12,9 @@ import Image from './Image';
 
 const Place = styled.li`
   font-size: 1.6rem;
-  border: 1px solid #fafafa;
   border-radius: 7px;
-  background-color: white;
-  color: black;
+  background-color: var(--black);
+  color: var(--white);
   min-height: 40rem;
   width: 35rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
@@ -24,7 +23,7 @@ const Place = styled.li`
 
   // Change color in react icons used in place component
   svg {
-    color: #b45309;
+    color: var(--yellow);
   }
 
   @media ${device.tablet} {
@@ -60,7 +59,6 @@ const Place = styled.li`
     }
 
     &__title {
-      color: black;
       font-size: 3rem;
       text-decoration: none;
     }
@@ -72,13 +70,12 @@ const Place = styled.li`
     }
 
     &__address {
-      color: rgba(107, 114, 128);
+      color: var(--dark-gray);
     }
 
     &__rating {
-      /* background-color: #f2d024; */
       border-radius: 7px;
-      color: black;
+      color: var(--white);
       padding: 0.3rem 0.5rem;
       display: flex;
       align-items: center;
