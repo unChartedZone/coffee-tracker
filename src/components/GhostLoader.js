@@ -1,13 +1,6 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
-const flash = keyframes`
-  0% {
-    transform: translateX(-105%);
-  }
-  100% {
-    transform: translateX(105%);
-  }
-`;
+import { flashAnimation } from '../styles/Animation';
 
 const GhostLoader = styled.div`
   height: 100%;
@@ -30,7 +23,7 @@ const GhostLoader = styled.div`
       rgba(211, 211, 211, 0) 100%
     );
 
-    animation: ${flash} 0.8s infinite;
+    animation: ${flashAnimation} 0.8s infinite;
   }
 `;
 

@@ -1,10 +1,7 @@
 import React from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const spinning = keyframes`
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-`;
+import { spinAnimation } from '../styles/Animation';
 
 const ButtonStyles = styled.button`
   font-size: 1.6rem;
@@ -81,7 +78,7 @@ const LoadingIcon = styled.div`
   height: 20px;
   border-radius: 50%;
   margin: 0 auto;
-  animation: ${spinning} infinite 0.5s linear;
+  animation: ${spinAnimation} infinite 0.5s linear;
 
   ${(props) =>
     props.color &&
