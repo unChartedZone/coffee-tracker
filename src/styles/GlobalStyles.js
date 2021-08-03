@@ -10,6 +10,7 @@ const GlobalStyles = createGlobalStyle`
     --light-black: #433c37;
     --black: #212325;
     --yellow: #D4A056;
+    --light-yellow: #FFD389;
   }
 
   html,

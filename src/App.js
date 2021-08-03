@@ -17,13 +17,9 @@ import CoffeeView from './pages/CoffeeView';
 import Footer from './components/Footer';
 
 const AppStyled = styled.main`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr auto;
   min-height: 100vh;
-`;
-
-const ContentStyled = styled.div`
-  flex: 1;
 `;
 
 const App = () => {
@@ -54,19 +50,17 @@ const App = () => {
     >
       <GlobalStyles />
       <AppStyled>
-        <ContentStyled>
-          <Router>
-            <Typograhpy />
-            <Switch>
-              <Route exact path="/">
-                <Index />
-              </Route>
-              <Route path="/:id">
-                <CoffeeView />
-              </Route>
-            </Switch>
-          </Router>
-        </ContentStyled>
+        <Router>
+          <Typograhpy />
+          <Switch>
+            <Route exact path="/">
+              <Index />
+            </Route>
+            <Route path="/:id">
+              <CoffeeView />
+            </Route>
+          </Switch>
+        </Router>
         <Footer />
       </AppStyled>
     </CoffeeContext.Provider>
