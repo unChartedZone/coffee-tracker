@@ -1,10 +1,11 @@
 import React, { useEffect, useContext, useCallback, useState } from 'react';
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { AiFillStar as Star } from 'react-icons/ai';
 import { FiPhone } from 'react-icons/fi';
 import { FaDirections } from 'react-icons/fa';
+import { VscArrowLeft as LeftArrow } from 'react-icons/vsc';
 
 import CoffeeContext from '../context/coffee-context';
 
@@ -12,6 +13,7 @@ import CoffeeContext from '../context/coffee-context';
 import Btn from '../components/Btn';
 import Categories from '../components/Categories';
 import RingLoader from '../components/LoadingIcons/RingLoader';
+import FloatingButton from '../components/FloatingButton';
 
 const baseURL = process.env.REACT_APP_BASE_API_URL;
 
@@ -88,6 +90,7 @@ const ImageGrid = styled.div`
 `;
 
 const CoffeeView = () => {
+  const history = useHistory();
   const [loading, setLoading] = useState(false);
   const { place, setPlace } = useContext(CoffeeContext);
   let { id } = useParams();
@@ -176,6 +179,13 @@ const CoffeeView = () => {
 
   return (
     <>
+      <FloatingButton
+        onClick={() => history.push('/')}
+        absolute
+        className="mx-1 my-1"
+      >
+        <LeftArrow />
+      </FloatingButton>
       <Place />
     </>
   );
