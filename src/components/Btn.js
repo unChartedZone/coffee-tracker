@@ -8,7 +8,7 @@ const ButtonStyles = styled.button`
   border-radius: 7px;
   border: none;
   background-color: var(--yellow);
-  color: var(--black);
+  color: var(--white);
   cursor: pointer;
   padding: 0.5rem 1rem;
   transition: all 0.2s ease-in-out;
@@ -18,10 +18,14 @@ const ButtonStyles = styled.button`
   outline: none;
   position: relative;
 
+  svg {
+    font-size: 1.6rem;
+    margin-right: 0.75rem;
+  }
+
   &:hover {
-    border: 1px solid black;
-    background-color: white;
-    color: black;
+    background-color: var(--black);
+    color: var(--white);
   }
 
   &:hover .icon {
@@ -57,6 +61,7 @@ const ButtonStyles = styled.button`
   ${(props) =>
     props.rounded &&
     css`
+      padding: 1rem 1.5rem;
       border-radius: 20px;
     `}
 
@@ -64,13 +69,24 @@ const ButtonStyles = styled.button`
     props.text &&
     css`
       border: none;
+      background-color: transparent;
       padding: 0;
+      color: var(--black);
 
       &:hover {
-        background-color: black;
+        background-color: transparent;
+        color: var(--yellow);
         text-decoration: underline;
       }
     `}
+`;
+
+const Container = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const LoadingIcon = styled.div`
@@ -113,7 +129,7 @@ const Button = ({
       {loading ? (
         <LoadingIcon className="icon" color={outlined ? 'black' : 'white'} />
       ) : (
-        children
+        <Container>{children}</Container>
       )}
     </ButtonStyles>
   );
