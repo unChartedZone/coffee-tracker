@@ -16,7 +16,7 @@ const PlacesStyled = styled.div`
     grid-template-columns: auto;
     flex-direction: column;
     list-style: none;
-    row-gap: 2rem;
+    gap: 4rem;
 
     @media ${device.laptop} {
       grid-template-columns: auto auto;
@@ -24,10 +24,6 @@ const PlacesStyled = styled.div`
 
     @media ${device.laptopL} {
       grid-template-columns: auto auto auto;
-    }
-
-    & > li {
-      margin-bottom: 2rem;
     }
   }
 `;

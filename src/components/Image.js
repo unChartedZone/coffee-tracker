@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import PropTypes from 'prop-types';
 import LazyLoad from 'react-lazyload';
 import fallbackImage from '../assets/images/coffee-shop-bg.jpg';
 
@@ -24,6 +25,11 @@ const Image = ({ src, alt, height, offset }) => {
       </LazyLoad>
     </>
   );
+};
+
+Image.propTypes = {
+  src: PropTypes.string,
+  alt: PropTypes.string,
 };
 
 export default Image;

@@ -11,6 +11,8 @@ import Categories from './Categories';
 import Image from './Image';
 
 const Place = styled.li`
+  display: flex;
+  flex-direction: column;
   font-size: 1.6rem;
   border-radius: 7px;
   background-color: var(--black);
@@ -49,6 +51,7 @@ const Place = styled.li`
     }
 
     &__content {
+      flex: 1;
       display: flex;
       flex-direction: column;
       padding: 1rem 0.95rem;
