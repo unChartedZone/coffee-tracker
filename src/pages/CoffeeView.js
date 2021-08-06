@@ -1,12 +1,12 @@
 import React, { useEffect, useContext, useCallback, useState } from 'react';
 import styled from 'styled-components';
 import { useParams, useHistory } from 'react-router-dom';
-import axios from 'axios';
 import { AiFillStar as Star } from 'react-icons/ai';
 import { FiPhone } from 'react-icons/fi';
 import { FaDirections } from 'react-icons/fa';
 import { VscArrowLeft as LeftArrow } from 'react-icons/vsc';
 
+import client from '../http';
 import CoffeeContext from '../context/coffee-context';
 
 // Components
@@ -14,17 +14,7 @@ import Btn from '../components/Btn';
 import Categories from '../components/Categories';
 import RingLoader from '../components/LoadingIcons/RingLoader';
 import FloatingButton from '../components/FloatingButton';
-
-const baseURL = process.env.REACT_APP_BASE_API_URL;
-
-const instance = axios.create({
-  baseURL: baseURL,
-});
-
-const PlaceStyled = styled.div`
-  padding: 20rem 0 10rem 0;
-  margin: 0 30rem;
-`;
+import Container from '../components/Container';
 
 const PlaceGrid = styled.div`
   display: grid;
@@ -97,7 +87,7 @@ const CoffeeView = () => {
 
   const fetchPlace = useCallback(async () => {
     setLoading(true);
-    let response = await instance.get('/.netlify/functions/places', {
+    let response = await client.get('/.netlify/functions/places', {
       params: {
         context: 'alias',
         alias: id,
