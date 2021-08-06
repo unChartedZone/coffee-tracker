@@ -1,16 +1,18 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { device } from '../helpers/device';
 
 import { spinAnimation } from '../styles/Animation';
 
 const ButtonStyles = styled.button`
-  font-size: 1.6rem;
+  display: inline-block;
+  font-size: 1.2rem;
   border-radius: 7px;
   border: none;
   background-color: var(--yellow);
-  color: var(--white);
+  color: var(--black);
   cursor: pointer;
-  padding: 0.5rem 1rem;
+  padding: 0.25rem 0.75rem;
   transition: all 0.2s ease-in-out;
   min-height: 3.5rem;
   min-width: 5rem;
@@ -18,9 +20,18 @@ const ButtonStyles = styled.button`
   outline: none;
   position: relative;
 
-  svg {
+  @media ${device.laptop} {
     font-size: 1.6rem;
+    padding: 0.5rem 1rem;
+  }
+
+  svg {
+    font-size: 1.4rem;
     margin-right: 0.75rem;
+
+    @media ${device.laptop} {
+      font-size: 1.6rem;
+    }
   }
 
   &:hover {
