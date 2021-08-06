@@ -37,6 +37,12 @@ const GlobalStyles = createGlobalStyle`
 
   // Utilities Classes
   .m {
+
+    &x-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     &x-1 {
       margin-left: 1rem;
       margin-right: 1rem;
@@ -73,7 +79,6 @@ const GlobalStyles = createGlobalStyle`
       margin-top: 3rem;
     }
   }
-
 `;
 
 export default GlobalStyles;
