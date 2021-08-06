@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import { device } from '../helpers/device';
+
 const ButtonStyled = styled.button`
   display: inline-block;
   border: none;
@@ -9,9 +11,16 @@ const ButtonStyled = styled.button`
   width: 4rem;
   border-radius: 50%;
   cursor: pointer;
-  background-color: var(--black);
-  color: var(--light-yellow);
+  background-color: var(--white);
+  color: var(--black);
   font-size: 2rem;
+  z-index: 100;
+
+  // Kinda dumb but makes it look nice
+  @media ${device.mobile} {
+    background-color: var(--black);
+    color: var(--white);
+  }
 
   div {
     display: flex;
