@@ -9,7 +9,7 @@ const TextFieldStyles = styled.div`
   }
 
   input {
-    background-color: var(--gray);
+    background-color: var(--bg-color);
     padding: 1rem 1.5rem;
     border: 1px solid #aaa;
     border-radius: 20px;
@@ -17,7 +17,7 @@ const TextFieldStyles = styled.div`
     outline: none;
 
     &::placeholder {
-      color: #998770;
+      color: var(--black);
     }
   }
 

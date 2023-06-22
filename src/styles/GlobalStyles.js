@@ -3,7 +3,7 @@ import bgImg from '../assets/images/coffee-shop-bg.jpg';
 
 const GlobalStyles = createGlobalStyle`
   :root {
-    --bg-color: #EADBCC;
+    --bg-color: #FFFFFF;
     --gray: #DACABD;
     --dark-gray: #7A7E82;
     --white: #F4E8DB;
